@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# Aviral Sanjay Gupta - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website! This project showcases my skills, projects, and professional background, built with modern web technologies.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Responsive Design:** Fully responsive layout ensuring a great experience on desktops, tablets, and mobile devices.
+*   **Dark/Light Mode:** Seamless theme switching with persistent preference.
+*   **Interactive UI:** Smooth animations using Framer Motion and dynamic particle background.
+*   **Modern Components:** Polished UI components built with Radix UI and styled with Tailwind CSS.
+*   **Sections:**
+    *   **Hero:** Introduction and quick links.
+    *   **About:** Professional summary.
+    *   **Skills:** Technical proficiency display.
+    *   **Projects:** Showcase of recent work.
+    *   **Contact:** Form to get in touch.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Framework:** [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+*   **Language:** [TypeScript](https://www.typescriptlang.org/)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+*   **Animations:** [Framer Motion](https://www.framer.com/motion/)
+*   **UI Primitives:** [Radix UI](https://www.radix-ui.com/)
+*   **Icons:** [Lucide React](https://lucide.dev/), [React Icons](https://react-icons.github.io/react-icons/)
+*   **Forms:** [React Hook Form](https://react-hook-form.com/)
+*   **Others:** tsparticles, sonner (toast notifications), recharts.
 
-## Expanding the ESLint configuration
+## 💻 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Ensure you have Node.js and npm (or yarn/pnpm) installed on your machine.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1.  Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd my-react-ts-app
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running Locally
+
+Start the development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Visit `http://localhost:5173` (or the URL shown in the terminal) to view the app.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To create a production build:
+
+```bash
+npm run build
 ```
+
+The output will be in the `dist` directory.
+
+### Linting
+
+Run the linter to catch errors:
+
+```bash
+npm run lint
+```
+
+## 📄 License
+
+[MIT](LICENSE)
