@@ -26,7 +26,7 @@ export interface TiltReturn {
 export function useTilt(options: TiltOptions = {}): TiltReturn {
   const {
     maxTilt = 15,
-    perspective = 1000,
+
     scale = 1.05,
     speed = 400,
     glare = true,

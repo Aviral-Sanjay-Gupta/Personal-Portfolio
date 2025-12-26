@@ -29,7 +29,7 @@ export function Contact({ isDarkMode }: ContactProps) {
     const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwAefnwcx-UwZ-EI73eH2rWGSfH4umSgu6TbIeeMxK3Xwm9PNibeiqtsAiZop6g9nY1/exec';
 
     try {
-      const response = await fetch(SHEET_URL, {
+      await fetch(SHEET_URL, {
         method: 'POST',
         mode: 'no-cors', // Required for Google Apps Script
         headers: {
@@ -46,7 +46,7 @@ export function Contact({ isDarkMode }: ContactProps) {
       // With no-cors mode, we can't read the response, so we assume success
       setSubmitStatus('success');
       setStatusMessage('Thank you! Your message has been sent successfully.');
-      
+
       // Reset form
       setFormData({
         name: '',
@@ -63,7 +63,7 @@ export function Contact({ isDarkMode }: ContactProps) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
       setStatusMessage('Oops! Something went wrong. Please try again or email me directly.');
-      
+
       // Clear error message after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
@@ -119,18 +119,16 @@ export function Contact({ isDarkMode }: ContactProps) {
             transition={{ duration: 0.5 }}
             className="mb-8"
           >
-            <h2 className={`text-4xl sm:text-5xl font-extrabold mb-4 pb-1 leading-tight bg-gradient-to-r ${
-              isDarkMode 
-                ? 'from-white via-gray-300 to-gray-500' 
+            <h2 className={`text-4xl sm:text-5xl font-extrabold mb-4 pb-1 leading-tight bg-gradient-to-r ${isDarkMode
+                ? 'from-white via-gray-300 to-gray-500'
                 : 'from-gray-300 via-black to-gray-300'
-            } bg-clip-text text-transparent`}>
+              } bg-clip-text text-transparent`}>
               Get In Touch
             </h2>
-            <div className={`w-24 h-1 mx-auto rounded-full ${
-              isDarkMode ? 'bg-gradient-to-r from-cyan-500 via-orange-500 to-fuchsia-500' : 'bg-gradient-to-r from-cyan-400 via-orange-400 to-fuchsia-400'
-            }`} />
+            <div className={`w-24 h-1 mx-auto rounded-full ${isDarkMode ? 'bg-gradient-to-r from-cyan-500 via-orange-500 to-fuchsia-500' : 'bg-gradient-to-r from-cyan-400 via-orange-400 to-fuchsia-400'
+              }`} />
           </motion.div>
-          <motion.p 
+          <motion.p
             className={`max-w-2xl mx-auto ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -150,15 +148,14 @@ export function Contact({ isDarkMode }: ContactProps) {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <motion.div 
-              className={`backdrop-blur-xl rounded-2xl p-8 shadow-xl ${
-                isDarkMode 
-                  ? 'bg-white/[0.03] border border-white/[0.08]' 
+            <motion.div
+              className={`backdrop-blur-xl rounded-2xl p-8 shadow-xl ${isDarkMode
+                  ? 'bg-white/[0.03] border border-white/[0.08]'
                   : 'bg-white/60 border border-white/40 shadow-cyan-200/20'
-              }`}
+                }`}
               whileHover={{ y: -5 }}
             >
-              <motion.h3 
+              <motion.h3
                 className={isDarkMode ? 'text-white mb-6' : 'text-gray-900 mb-6'}
                 initial={{ opacity: 0, y: -10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -177,18 +174,16 @@ export function Contact({ isDarkMode }: ContactProps) {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     whileHover={{ x: 10, scale: 1.02 }}
-                    className={`flex items-center gap-4 p-4 backdrop-blur-sm rounded-xl transition-all duration-300 group ${
-                      isDarkMode 
-                        ? 'bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05]' 
+                    className={`flex items-center gap-4 p-4 backdrop-blur-sm rounded-xl transition-all duration-300 group ${isDarkMode
+                        ? 'bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05]'
                         : 'bg-white/40 border border-white/30 hover:bg-white/60'
-                    }`}
-                  >
-                    <motion.div 
-                      className={`flex items-center justify-center w-12 h-12 backdrop-blur-sm rounded-xl group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${
-                        isDarkMode 
-                          ? 'from-neutral-900 to-black border border-white/10' 
-                          : 'from-cyan-400/30 to-emerald-400/30 border border-cyan-300/30'
                       }`}
+                  >
+                    <motion.div
+                      className={`flex items-center justify-center w-12 h-12 backdrop-blur-sm rounded-xl group-hover:scale-110 transition-transform duration-300 bg-gradient-to-br ${isDarkMode
+                          ? 'from-neutral-900 to-black border border-white/10'
+                          : 'from-cyan-400/30 to-emerald-400/30 border border-cyan-300/30'
+                        }`}
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
@@ -209,13 +204,12 @@ export function Contact({ isDarkMode }: ContactProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ y: -5 }}
-              className={`backdrop-blur-xl rounded-2xl p-8 shadow-xl ${
-                isDarkMode 
-                  ? 'bg-white/[0.03] border border-white/[0.08]' 
+              className={`backdrop-blur-xl rounded-2xl p-8 shadow-xl ${isDarkMode
+                  ? 'bg-white/[0.03] border border-white/[0.08]'
                   : 'bg-white/60 border border-white/40 shadow-cyan-200/20'
-              }`}
+                }`}
             >
-              <motion.h3 
+              <motion.h3
                 className={isDarkMode ? 'text-white mb-4' : 'text-gray-900 mb-4'}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -224,7 +218,7 @@ export function Contact({ isDarkMode }: ContactProps) {
               >
                 Let's Connect
               </motion.h3>
-              <motion.p 
+              <motion.p
                 className={`mb-4 ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -234,7 +228,7 @@ export function Contact({ isDarkMode }: ContactProps) {
                 I'm always open to discussing new projects, creative ideas, or opportunities
                 to be part of your vision.
               </motion.p>
-              <motion.p 
+              <motion.p
                 className={isDarkMode ? 'text-white/70' : 'text-gray-700'}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -253,11 +247,10 @@ export function Contact({ isDarkMode }: ContactProps) {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6 }}
             whileHover={{ y: -5 }}
-            className={`backdrop-blur-xl rounded-2xl p-8 shadow-xl ${
-              isDarkMode 
-                ? 'bg-white/[0.03] border border-white/[0.08]' 
+            className={`backdrop-blur-xl rounded-2xl p-8 shadow-xl ${isDarkMode
+                ? 'bg-white/[0.03] border border-white/[0.08]'
                 : 'bg-white/60 border border-white/40 shadow-cyan-200/20'
-            }`}
+              }`}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Status Message */}
@@ -266,15 +259,14 @@ export function Contact({ isDarkMode }: ContactProps) {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className={`p-4 rounded-xl backdrop-blur-sm border ${
-                    submitStatus === 'success'
+                  className={`p-4 rounded-xl backdrop-blur-sm border ${submitStatus === 'success'
                       ? isDarkMode
                         ? 'bg-green-500/10 border-green-500/30 text-green-300'
                         : 'bg-green-100 border-green-300 text-green-800'
                       : isDarkMode
                         ? 'bg-red-500/10 border-red-500/30 text-red-300'
                         : 'bg-red-100 border-red-300 text-red-800'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center gap-2">
                     {submitStatus === 'success' ? (
@@ -297,9 +289,8 @@ export function Contact({ isDarkMode }: ContactProps) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                <label htmlFor="name" className={`block mb-2 ${
-                  isDarkMode ? 'text-white/80' : 'text-gray-700'
-                }`}>
+                <label htmlFor="name" className={`block mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'
+                  }`}>
                   Name
                 </label>
                 <Input
@@ -308,11 +299,10 @@ export function Contact({ isDarkMode }: ContactProps) {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className={`backdrop-blur-sm ${
-                    isDarkMode 
-                      ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30' 
+                  className={`backdrop-blur-sm ${isDarkMode
+                      ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30'
                       : 'bg-white/50 border-gray-300/50 text-gray-900 placeholder:text-gray-500 focus:border-cyan-400/50'
-                  }`}
+                    }`}
                   required
                 />
               </motion.div>
@@ -323,9 +313,8 @@ export function Contact({ isDarkMode }: ContactProps) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <label htmlFor="email" className={`block mb-2 ${
-                  isDarkMode ? 'text-white/80' : 'text-gray-700'
-                }`}>
+                <label htmlFor="email" className={`block mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'
+                  }`}>
                   Email
                 </label>
                 <Input
@@ -335,11 +324,10 @@ export function Contact({ isDarkMode }: ContactProps) {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your.email@example.com"
-                  className={`backdrop-blur-sm ${
-                    isDarkMode 
-                      ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30' 
+                  className={`backdrop-blur-sm ${isDarkMode
+                      ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30'
                       : 'bg-white/50 border-gray-300/50 text-gray-900 placeholder:text-gray-500 focus:border-cyan-400/50'
-                  }`}
+                    }`}
                   required
                 />
               </motion.div>
@@ -350,9 +338,8 @@ export function Contact({ isDarkMode }: ContactProps) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <label htmlFor="message" className={`block mb-2 ${
-                  isDarkMode ? 'text-white/80' : 'text-gray-700'
-                }`}>
+                <label htmlFor="message" className={`block mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'
+                  }`}>
                   Message
                 </label>
                 <Textarea
@@ -362,11 +349,10 @@ export function Contact({ isDarkMode }: ContactProps) {
                   onChange={handleChange}
                   placeholder="Your message..."
                   rows={6}
-                  className={`backdrop-blur-sm resize-none ${
-                    isDarkMode 
-                      ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30' 
+                  className={`backdrop-blur-sm resize-none ${isDarkMode
+                      ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40 focus:border-white/30'
                       : 'bg-white/50 border-gray-300/50 text-gray-900 placeholder:text-gray-500 focus:border-cyan-400/50'
-                  }`}
+                    }`}
                   required
                 />
               </motion.div>
@@ -380,11 +366,10 @@ export function Contact({ isDarkMode }: ContactProps) {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full backdrop-blur-sm transition-all duration-300 ${
-                    isDarkMode 
-                      ? 'bg-white/10 hover:bg-white/20 border border-white/20 text-white disabled:bg-white/5 disabled:text-white/50' 
+                  className={`w-full backdrop-blur-sm transition-all duration-300 ${isDarkMode
+                      ? 'bg-white/10 hover:bg-white/20 border border-white/20 text-white disabled:bg-white/5 disabled:text-white/50'
                       : 'bg-gray-900/10 hover:bg-gray-900/20 border border-gray-900/20 text-gray-900 disabled:bg-gray-900/5 disabled:text-gray-900/50'
-                  }`}
+                    }`}
                 >
                   {isSubmitting ? (
                     <>

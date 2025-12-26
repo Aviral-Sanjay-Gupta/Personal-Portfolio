@@ -1,7 +1,6 @@
 import { useMemo, useState, useRef } from 'react';
-import { motion, useMotionValue, useTransform, type PanInfo } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 import { cn } from '../lib/utils';
-import { type ComponentType } from 'react';
 
 // Import tech icons
 import ReactIcon from '../assets/react.svg';
@@ -27,29 +26,29 @@ function resolveIcon(imported: any) {
   if (typeof imported === 'string') {
     return (props: any) => <img src={imported} alt="" {...props} />;
   }
- 
+
   // If it's an object with a default that is a string (some bundlers)
   if (imported && typeof imported.default === 'string') {
     return (props: any) => <img src={imported.default} alt="" {...props} />;
   }
- 
+
   // If it's an object with a ReactComponent property (common svgr)
   if (imported && imported.ReactComponent) {
     return imported.ReactComponent;
   }
- 
+
   // If the module default is a function/component (svgr configured to default export)
   if (imported && typeof imported.default === 'function') {
     return imported.default;
   }
- 
+
   // If the module itself is a component
   if (typeof imported === 'function') {
     return imported;
   }
- 
+
   // As a last fallback, render nothing
-  return (props: any) => null;
+  return () => null;
 }
 
 const defaultTech: TechItem[] = [
@@ -73,20 +72,20 @@ export interface TechMarqueeProps {
   className?: string;
 }
 
-export function TechMarquee({ 
-  tech = defaultTech, 
+export function TechMarquee({
+  tech = defaultTech,
   speed = 30,
   pauseOnHover = true,
-  className 
+  className
 }: TechMarqueeProps) {
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const x = useMotionValue(0);
   const constraintsRef = useRef<HTMLDivElement>(null);
-  
+
   // Duplicate items for seamless loop
   const duplicatedTech = [...tech, ...tech, ...tech];
-  
+
   // Tooltip state
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -94,7 +93,7 @@ export function TechMarquee({
   const keyFrames = useMemo(() => [0, -100 * tech.length], [tech.length]);
 
   return (
-    <div 
+    <div
       className={cn('relative overflow-hidden py-8', className)}
       onMouseEnter={() => pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => {
@@ -144,7 +143,7 @@ export function TechMarquee({
                 'group-hover:border-[var(--glow-primary)]'
               )}>
                 <Icon className="h-8 w-8 text-foreground transition-colors duration-300 group-hover:text-[var(--glow-primary)]" />
-                
+
                 {/* Glow effect on hover */}
                 <motion.div
                   className="pointer-events-none absolute inset-0 rounded-xl"
@@ -157,7 +156,7 @@ export function TechMarquee({
                   }}
                 />
               </div>
-              
+
               {/* Tooltip */}
               <motion.span
                 className={cn(
@@ -169,7 +168,7 @@ export function TechMarquee({
                   'pointer-events-none'
                 )}
                 initial={{ opacity: 0, y: -10 }}
-                animate={{ 
+                animate={{
                   opacity: hoveredIndex === index ? 1 : 0,
                   y: hoveredIndex === index ? 0 : -10,
                 }}
