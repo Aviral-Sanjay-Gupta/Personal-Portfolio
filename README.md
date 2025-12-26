@@ -54,25 +54,3 @@ npm run dev
 ```
 
 Visit `http://localhost:5173` (or the URL shown in the terminal) to view the app.
-
-### Building for Production
-
-To create a production build:
-
-```bash
-npm run build
-```
-
-The output will be in the `dist` directory.
-
-### Linting
-
-Run the linter to catch errors:
-
-```bash
-npm run lint
-```
-
-## 📄 License
-
-[MIT](LICENSE)
